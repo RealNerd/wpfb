@@ -1,0 +1,22 @@
+<project name="wpfb" default="build" basedir=".">
+
+	<target name="build">
+		
+		<delete dir="${basedir}/.staging" />
+		
+		<mkdir dir="${basedir}/.staging" />
+		
+		<copy todir="${basedir}/.staging">
+			<fileset dir="${basedir}/src/wp-content/plugins/wpfb" includes="**/*" />
+			<fileset dir="${basedir}/etc" includes="**/*" />
+		</copy>
+		
+		<zip destfile="wpfb.zip">
+			<fileset dir="${basedir}/.staging" includes="**/*" />
+		</zip>
+		
+		<delete dir="${basedir}/.staging" />
+	
+	</target>
+	
+</project>
